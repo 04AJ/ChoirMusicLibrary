@@ -1,11 +1,19 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
-    return{
-     
-        
-    };
+    return (
+        <>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <Link to="/" className="navbar-logo">
+                        St. Mary's Youth Choir
+                    </Link>
+
+                </div>
+            </nav>
+        </>
+    );
 }
 
 export default Navbar
