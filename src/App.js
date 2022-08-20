@@ -1,31 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom';
 import './App.css'
-import { BrowserRouter as Routes, Route, Router } from 'react-router-dom';
-import Intro from "./Intro";
-import Communion from "./Communion";
-import Adoration from "./Adoration";
-import Hymns from "./Hymns";
+import { Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Intro from "./pages/Intro";
+import Communion from "./pages/Communion";
+import Adoration from "./pages/Adoration";
+import Hymns from "./pages/Hymns";
 import Navbar from "./components/Navbar";
 
 
 function App() {
   return (
-    <div className="App">
-      <>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/intro" component={<Intro />} />
-            <Route path="/communion" component={<Communion />} />
-            <Route path="/adoration" component={<Adoration />} />
-            <Route path="/hymns" component={<Hymns />} />
-          </Routes>
-        </Router>
-      </>
+
+    <>
+
+      <Navbar />
+      <div className="App">
 
 
-    </div>
+
+
+
+        <Routes>
+
+          <Route path="/pages/intro" element={<Intro />} />
+          <Route path="/pages/communion" element={<Communion />} />
+          <Route path="/pages/adoration" element={<Adoration />} />
+          <Route path="/pages/hymns" element={<Hymns />} />
+
+        </Routes>
+
+
+
+
+
+      </div>
+    </>
   );
 }
 
