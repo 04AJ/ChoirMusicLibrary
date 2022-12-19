@@ -1,3 +1,15 @@
-.App {
-  text-align: center;
+.churchPic{
+  width: 40vw;
+  padding: 1rem;
+}
+
+.App{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+body{
+  margin: none;
+
 }

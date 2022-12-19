@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import './Navbar.css'
 
 function Navbar() {
     return (
@@ -10,20 +11,20 @@ function Navbar() {
                         St. Mary's Youth Choir
                     </Link>
 
-                    <ul>
-                        <li>
-                            <CustomLink to="/pages/intro" className="home-intro">Intro Songs</CustomLink>
-                        </li>
-                        <li>
-                            <CustomLink to="/pages/communion" className="home-intro">Communion Songs</CustomLink>
-                        </li>
-                        <li>
-                            <CustomLink to="/pages/adoration" className="home-intro">Adoration Songs</CustomLink>
-                        </li>
-                        <li>
-                            <CustomLink to="/pages/hymns" className="home-intro">Hymns</CustomLink>
-                        </li>
-                    </ul>
+                    <div className="pages">
+                        <>
+                            <CustomLink to="/pages/intro" className="link intro">Intro Songs</CustomLink>
+                        </>
+                        <>
+                            <CustomLink to="/pages/communion" className="link comm">Communion Songs</CustomLink>
+                        </>
+                        <>
+                            <CustomLink to="/pages/adoration" className="link ado">Adoration Songs</CustomLink>
+                        </>
+                        <>
+                            <CustomLink to="/pages/hymns" className="link hymns">Hymns</CustomLink>
+                        </>
+                    </div>
 
 
                 </div>

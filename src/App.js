@@ -8,6 +8,7 @@ import Communion from "./pages/Communion";
 import Adoration from "./pages/Adoration";
 import Hymns from "./pages/Hymns";
 import Navbar from "./components/Navbar";
+import churchPic from './img/church.jpg';
 
 
 function App() {
@@ -34,8 +35,10 @@ function App() {
 
 
 
-
+        <img className="churchPic" src={churchPic} />
       </div>
+
+
     </>
   );
 }

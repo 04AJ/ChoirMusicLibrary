@@ -1,0 +1,30 @@
+
+
+
+.navbar{
+    background-color: lightblue;
+    padding: 1vw;
+  
+}
+.navbar-container{
+    text-align: center;
+}
+.navbar-logo{
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    text-decoration: none;
+    color: black;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
