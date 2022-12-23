@@ -1,37 +1,59 @@
-import React, { Component } from 'react';
-//paths without . or / immediately point to nodemodule library
-// import uuid from "uuid/v4";
+import React, { useState } from 'react'
 
-class NewSongForm extends Component {
+function NewSongForm(props) {
+    const [input, setInput] = useState({
+        title: props.title,
+        composer: props.composer,
+        _key: props._key,
+        lyrics: props.lyrics
 
+    });
+    const [id, setId] = useState(0);
 
-    constructor(props) {
-        super(props);
-        this.state = { hymn: "", num: 0 }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    const handleTitleChange = e => {
+        setInput({ ...input, title: e.target.value })
     }
-
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    const handleComposerChange = e => {
+        setInput({ ...input, composer: e.target.value })
     }
-
-    handleSubmit(e) {
-        //prevents page from reloading
+    const handleKeyChange = e => {
+        setInput({ ...input, _key: e.target.value })
+    }
+    const handleLyricsChange = e => {
+        setInput({ ...input, lyrics: e.target.value })
+    }
+    const handleSubmit = e => {
         e.preventDefault();
-        this.props.createSong({ ...this.state, id: this.state.num++ });
-        this.setState({ hymn: "" });
-    }
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor='hymn'>New Song</label>
-                <input type='text' placeholder='New Song' id='hymn' value={this.state.hymn} name='hymn' onChange={this.handleChange} />
-                <button>Add Song</button>
+        let num = id + 1;
+        setId(num);
+        props.onSubmit({
+            id: id,
+            title: input.title,
+            composer: input.composer,
+            _key: input._key,
+            lyrics: input.lyrics
+
+        })
+        setInput({
+            title: "",
+            composer: "",
+            _key: "",
+            lyrics: ""
+        });
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input type='text' placeholder='title' value={input.title} name='text' className='input-title' onChange={handleTitleChange}></input>
+                <input type='text' placeholder='composer' value={input.composer} name='text' className='input-composer' onChange={handleComposerChange}></input>
+                <input type='text' placeholder='key' value={input._key} name='text' className='input-key' onChange={handleKeyChange}></input>
+                <input type='text' placeholder='lyrics' value={input.lyrics} name='text' className='input-lyrics' onChange={handleLyricsChange}></input>
+
+                <button>Submit</button>
             </form>
-        )
-    }
+
+        </div>
+    )
 }
 export default NewSongForm;

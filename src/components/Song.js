@@ -1,61 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import NewSongForm from './NewSongForm';
+import { RiCloseCircleLine } from 'react-icons/ri';
+import { TiEdit } from 'react-icons/ti';
+import EditSongForm from './EditSongForm';
 
 
-class Song extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEditing: false,
-            song: this.props.hymn
-        };
-        this.handleRemove = this.handleRemove.bind(this);
-        this.toggleForm = this.toggleForm.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleUpdate = this.handleUpdate.bind(this);
-    }
-    handleRemove() {
-        this.props.removeSong(this.props.id);
-    }
-    toggleForm() {
-        this.setState({ isEditing: !this.state.isEditing });
-    }
-    handleUpdate(e) {
-        e.preventDefault();
-        //take new song data and pass up to parent
-        this.props.updateSong(this.props.id, this.state.song);
-        this.toggleForm();
 
-    }
 
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+function Song({ song, removeSong, editSong }) {
+    const [isEditing, toggle] = useToggle(false);
 
-    render() {
-        let result;
-        if (this.state.isEditing) {
-            result = (
-                <div>
-                    <form onSubmit={this.handleUpdate}>
-                        <input type='text' value={this.state.song} name='song' onChange={this.handleChange}></input>
-                        <button >Save</button>
-                    </form>
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-                    <button onClick={this.toggleForm}>Edit</button>
-                    <button onClick={this.handleRemove}>X</button>
-                    <li>{this.props.hymn}</li>
-                </div>
-            )
-        }
-        return result;
 
-    }
+    return (
+
+
+        <div>
+            {isEditing ? (
+                <EditSongForm editSong={editSong} toggle={toggle} id={song.id} title={song.title} composer={song.composer} _key={song._key} lyrics={song.lyrics} />
+            ) : (
+                <>
+                    <div key={song.id}>{"Title: " + song.title + " | By: " + song.composer + " | Key: " + song._key}</div>
+                    <div className='icons'>
+                        <RiCloseCircleLine onClick={() => removeSong(song.id)} />
+                        <TiEdit onClick={toggle} />
+                    </div>
+                </>
+            )}
+
+        </div>
+
+    )
+
 }
 export default Song;
+
+function useToggle(initialVal = false) {
+    const [state, setState] = useState(initialVal);
+    const toggle = () => {
+        setState(!state);
+    };
+    return [state, toggle];
+}
+
