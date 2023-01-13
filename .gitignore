@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/flask-server/venv
 /.pnp
 .pnp.js
 
