@@ -4,7 +4,7 @@ function Intro() {
     const [data, setData] = useState([{}]);
 
     useEffect(() => {
-        fetch("/intro").then(
+        fetch("/song/1").then(
             res => res.json()
         ).then(
             data => {

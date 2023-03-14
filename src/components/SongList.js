@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NewSongForm from './NewSongForm'
 import Song from './Song'
 
-function SongList() {
+function SongList(props) {
     const [songs, setSongs] = useState([])
 
     const addSong = song => {
@@ -34,10 +34,16 @@ function SongList() {
 
     return (
         <div>
+
             <NewSongForm onSubmit={addSong} />
             {songs.map(song => (
                 <Song key={song.id} song={song} removeSong={removeSong} editSong={editSong} />
             ))}
+            {/* {props.listOfTodos.map(todo => (
+                <ul key={todo.id}>
+                    <li>{todo.title}</li>
+                </ul>
+            ))} */}
 
 
         </div>

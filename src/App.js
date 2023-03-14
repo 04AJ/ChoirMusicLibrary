@@ -7,6 +7,7 @@ import Intro from "./pages/Intro";
 import Communion from "./pages/Communion";
 import Adoration from "./pages/Adoration";
 import Hymns from "./pages/Hymns";
+import Todo from "./pages/Todo";
 import Navbar from "./components/Navbar";
 import churchPic from './img/church.jpg';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/pages/communion" element={<Communion />} />
           <Route path="/pages/adoration" element={<Adoration />} />
           <Route path="/pages/hymns" element={<Hymns />} />
+          <Route path="/pages/todo" element={<Todo />} />
 
         </Routes>
 

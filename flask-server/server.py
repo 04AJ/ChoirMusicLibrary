@@ -21,9 +21,13 @@ class SongModel(db.Model):
     def __repr__(self):
         return '<Title %r>' % self.title
 
+
 # ONLY RUN ONCE
 # with app.app_context():
-#     db.create_all()
+#     song = SongModel(title='Fugue', composer='Bach',
+#                      key='A Major', lyrics="Dies Ires")
+#     db.session.add(song)
+#     db.session.commit()
 
 
 song_put_args = reqparse.RequestParser()

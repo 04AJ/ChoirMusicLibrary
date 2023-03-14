@@ -24,6 +24,9 @@ function Navbar() {
                         <>
                             <CustomLink to="/pages/hymns" className="link hymns">Hymns</CustomLink>
                         </>
+                        <>
+                            <CustomLink to="/pages/todo" className="link hymns">Todos</CustomLink>
+                        </>
                     </div>
 
 
