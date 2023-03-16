@@ -86,11 +86,12 @@ class Song(Resource):
         db.session.commit()
         return song, 201
 
+    @marshal_with(resource_fields)
     def patch(self, song_id):
         args = song_update_args.parse_args()
         result = SongModel.query.filter_by(id=song_id).first()
         if not result:
-            abort(404, message="Song doens't exist, cannot update...")
+            abort(404, message="Song doesn't exist, cannot update...")
 
         if args['title']:
             result.title = args['title']
@@ -106,6 +107,13 @@ class Song(Resource):
 
     @marshal_with(resource_fields)
     def delete(self, song_id):
+        args = song_update_args.parse_args()
+        result = SongModel.query.filter_by(id=song_id).first()
+        if not result:
+            abort(404, message="Song doesn't exist, cannot delete...")
+
+        SongModel.query.filter_by(id=song_id).delete()
+        db.session.commit()
         return '', 204
 
 
